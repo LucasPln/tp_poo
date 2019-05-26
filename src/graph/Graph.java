@@ -41,4 +41,11 @@ public interface Graph {
      */
     public int numbOfEdgeByVertex(Vertex vertex);
 
+    /**
+     * Permet de savoir si un noeud est dans le graphe
+     * @param vertex Le noeud a testé
+     * @return Boolean : Vrai si le noeud est dans le graphe, faux sinon
+     */
+    public Boolean vertexIsIn(Vertex vertex);
+
 }
