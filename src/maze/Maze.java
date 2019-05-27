@@ -14,7 +14,7 @@ public class Maze{
         this.largeur = largeur;
         Cell[][] lab = new Cell[hauteur][largeur];
         for (Cell cell : listeEBox){
-            lab[cell.getCoordY()][cell.getCoordX()] = cell;
+            lab[cell.getCoordX()][cell.getCoordY()] = cell;
         }
 
         for(int i = 0; i < hauteur; i++){
@@ -25,7 +25,7 @@ public class Maze{
             }
         }
 
-        Cell[] tabCell = new Cell[hauteur+largeur];
+        Cell[] tabCell = new Cell[hauteur*largeur];
         
         int index = 0;
         for(int i = 0; i < hauteur; i++){
@@ -35,6 +35,30 @@ public class Maze{
             }
         }
         this.graph = new GraphImpl(tabCell, false);
+    }
+
+    @Override
+    public String toString(){
+        String chaine = "";
+        for(int i = 0; i < graph.numbOfVertex(); i++){
+
+            Cell cell = (Cell) graph.getTabNoeud()[i];
+            if(cell.getTypeCells() == TypeCells.DBox){
+                chaine += "D ";
+            } else if(cell.getTypeCells() == TypeCells.ABox){
+                chaine += "A ";
+            } else if(cell.getTypeCells() == TypeCells.EBox){
+                chaine += "E ";
+            } else if(cell.getTypeCells() == TypeCells.WBox){
+                chaine += ". ";
+            }
+
+            if(i%largeur == largeur-1) chaine += "\n";
+        }
+
+        return chaine;
+
+
     }
 
 

@@ -137,4 +137,8 @@ public class GraphImpl implements Graph {
     public void setIsDirected(Boolean isDirected){
         this.isDirected = isDirected;
     }
+
+    public Vertex[] getTabNoeud(){
+        return this.tabNoeud;
+    }
 }
