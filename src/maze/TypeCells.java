@@ -1,6 +1,6 @@
 package maze;
 
-import src.graph.*;
+import graph.*;
 
 public enum TypeCells {
     DBox, ABox, EBox, WBox;
