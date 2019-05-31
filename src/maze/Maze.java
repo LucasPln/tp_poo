@@ -1,13 +1,21 @@
 package maze;
 
 import graph.*;
+import java.io.Serializable;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
-public class Maze{
+public class Maze implements Serializable{
 
     private GraphImpl graph;
     private int hauteur;
     private int largeur;
 
+    public Maze(){
+
+    }
 
     public Maze(int hauteur, int largeur, Cell[] listeEBox){
         this.hauteur = hauteur;
@@ -26,7 +34,7 @@ public class Maze{
         }
 
         Cell[] tabCell = new Cell[hauteur*largeur];
-        
+
         int index = 0;
         for(int i = 0; i < hauteur; i++){
             for (int j = 0; j < largeur; j++) {
@@ -55,14 +63,51 @@ public class Maze{
 
             if(i%largeur == largeur-1) chaine += "\n";
         }
-
         return chaine;
-
-
     }
 
 
-    
-    
+
+    public void saveMaze(){
+      String filename = "Graphique.ser";
+
+      FileOutputStream fos = null;
+      ObjectOutputStream out = null;
+      try {
+          fos = new FileOutputStream(filename);
+          out = new ObjectOutputStream(fos);
+          out.writeObject(this);
+          out.close();
+
+      } catch (Exception ex) {
+          ex.printStackTrace();
+      }
+      System.out.println("Sauvegarde du Maze effectué");
+    }
+
+    public void loadMaze(){
+      String filename = "Graphique.ser";
+      FileInputStream fis = null;
+      ObjectInputStream in = null;
+      Maze newMaze = new Maze();
+      try {
+          fis = new FileInputStream(filename);
+          in = new ObjectInputStream(fis);
+          newMaze = (Maze) in.readObject();
+          in.close();
+      } catch (Exception ex) {
+          ex.printStackTrace();
+      }
+      this.hauteur = newMaze.hauteur;
+      this.largeur = newMaze.largeur;
+      this.graph = newMaze.graph;
+      
+      System.out.println("Chargement du Maze effecuté");
+    }
+
+
+
+
+
 
 }
