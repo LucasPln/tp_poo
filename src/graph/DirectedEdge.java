@@ -1,6 +1,6 @@
 package graph;
 
-public class DirectedEdge extends Edge {
+public class DirectedEdge extends Edge{
 
     /**
      * Vrai si vertex1 = début, sinon Faux

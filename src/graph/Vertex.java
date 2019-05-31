@@ -1,13 +1,14 @@
 package graph;
+import java.io.Serializable;
 
-public class Vertex {
+public class Vertex implements Serializable{
 
     /**
      * Nom du noeud
      */
     private String label;
     private Vertex[] voisins;
-    
+
     /**
      * Constructeur d'un Noeud
      * @param label

@@ -1,6 +1,7 @@
 package graph;
+import java.io.Serializable;
 
-public class GraphImpl implements Graph {
+public class GraphImpl implements Graph, Serializable{
 
     private Vertex[] tabNoeud;
     private Boolean isDirected;
@@ -59,10 +60,10 @@ public class GraphImpl implements Graph {
                     }
                 }
             } else {
-                
+
                 edge.getVertex1().addVoisin(edge.getVertex2());
                 edge.getVertex2().addVoisin(edge.getVertex1());
-                
+
             }
         }
     }
@@ -70,7 +71,7 @@ public class GraphImpl implements Graph {
     @Override
     public Boolean existEdgeBetween(Vertex vertex1, Vertex vertex2) {
         Boolean aVoisin = false;
-        
+
         for (Vertex noeud : vertex1.getVoisins()){
             if (noeud.equals(vertex2)){
                 aVoisin = true;
@@ -105,7 +106,7 @@ public class GraphImpl implements Graph {
         } else {
             return (result/2);
         }
-        
+
     }
 
     @Override

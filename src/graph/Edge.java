@@ -1,6 +1,7 @@
 package graph;
+import java.io.Serializable;
 
-public abstract class Edge {
+public abstract class Edge implements Serializable{
 
     /**
      * 1er noeud

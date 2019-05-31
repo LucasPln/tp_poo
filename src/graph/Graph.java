@@ -1,6 +1,7 @@
 package graph;
 
-public interface Graph {
+
+public interface Graph{
 
     /**
      * Ajoute un noeud au graph
