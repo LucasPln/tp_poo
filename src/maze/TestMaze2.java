@@ -1,12 +1,8 @@
 package maze;
 
 import graph.*;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 
-public class TestMaze{
+public class TestMaze2{
 
     public static void main(String[] args) {
         Cell cell1 = new Cell(TypeCells.DBox, 0,0,"");
@@ -33,31 +29,10 @@ public class TestMaze{
         System.out.println("Affichage du maze n°2 :");
         System.out.println(maze2);
 
-        String filename = "file.ser";
-
-        FileOutputStream fos = null;
-        ObjectOutputStream out = null;
-        try {
-            fos = new FileOutputStream(filename);
-            out = new ObjectOutputStream(fos);
-            out.writeObject(maze);
-            System.out.println("Enregistrement du maze 1 dans un fichier");
-            out.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        
-        FileInputStream fis = null;
-        ObjectInputStream in = null;
-        try {
-            fis = new FileInputStream(filename);
-            in = new ObjectInputStream(fis);
-            maze2 = (Maze) in.readObject();
-            System.out.println("Chargement du maze 1 dans le maze 2");
-            in.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        System.out.println("Sauvegarde du maze n°1");
+        maze.saveMaze();
+        System.out.println("Chargement du maze n°1 dans le maze n°2");
+        maze2.loadMaze();
 
         System.out.println("Affichage du maze n°2 :");
         System.out.println(maze2);
