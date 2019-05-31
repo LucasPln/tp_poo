@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Scanner;
 
 public class Maze implements Serializable{
 
@@ -69,7 +70,9 @@ public class Maze implements Serializable{
 
 
     public void saveMaze(){
-      String filename = "Graphique.ser";
+      Scanner sc = new Scanner(System.in);
+      System.out.println("Veuillez saisir le nom du fichier pour sauvegarder le Maze avec l'extension: .ser :");
+      String filename  = sc.nextLine();
 
       FileOutputStream fos = null;
       ObjectOutputStream out = null;
@@ -86,7 +89,10 @@ public class Maze implements Serializable{
     }
 
     public void loadMaze(){
-      String filename = "Graphique.ser";
+      Scanner sc = new Scanner(System.in);
+      System.out.println("Veuillez saisir le nom du fichier pour charger le Maze avec l'extension: .ser :");
+      String filename  = sc.nextLine();
+
       FileInputStream fis = null;
       ObjectInputStream in = null;
       Maze newMaze = new Maze();
@@ -101,7 +107,7 @@ public class Maze implements Serializable{
       this.hauteur = newMaze.hauteur;
       this.largeur = newMaze.largeur;
       this.graph = newMaze.graph;
-      
+
       System.out.println("Chargement du Maze effecuté");
     }
 
