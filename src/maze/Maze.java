@@ -70,50 +70,46 @@ public class Maze implements Serializable{
 
 
     public void saveMaze(){
-      Scanner sc = new Scanner(System.in);
-      System.out.println("Veuillez saisir le nom du fichier pour sauvegarder le Maze avec l'extension: .ser :");
-      String filename  = sc.nextLine();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Veuillez saisir le nom du fichier pour sauvegarder le Maze avec l'extension: .ser :");
+        String filename  = sc.nextLine();
 
-      FileOutputStream fos = null;
-      ObjectOutputStream out = null;
-      try {
-          fos = new FileOutputStream(filename);
-          out = new ObjectOutputStream(fos);
-          out.writeObject(this);
-          out.close();
+        FileOutputStream fos = null;
+        ObjectOutputStream out = null;
+        try {
+            fos = new FileOutputStream(filename);
+            out = new ObjectOutputStream(fos);
+            out.writeObject(this);
+            out.close();
 
-      } catch (Exception ex) {
-          ex.printStackTrace();
-      }
-      System.out.println("Sauvegarde du Maze effectué");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        System.out.println("Sauvegarde du Maze effectué");
     }
 
     public void loadMaze(){
-      Scanner sc = new Scanner(System.in);
-      System.out.println("Veuillez saisir le nom du fichier pour charger le Maze avec l'extension: .ser :");
-      String filename  = sc.nextLine();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Veuillez saisir le nom du fichier pour charger le Maze avec l'extension: .ser :");
+        String filename  = sc.nextLine();
 
-      FileInputStream fis = null;
-      ObjectInputStream in = null;
-      Maze newMaze = new Maze();
-      try {
-          fis = new FileInputStream(filename);
-          in = new ObjectInputStream(fis);
-          newMaze = (Maze) in.readObject();
-          in.close();
-      } catch (Exception ex) {
-          ex.printStackTrace();
-      }
-      this.hauteur = newMaze.hauteur;
-      this.largeur = newMaze.largeur;
-      this.graph = newMaze.graph;
+        FileInputStream fis = null;
+        ObjectInputStream in = null;
+        Maze newMaze = new Maze();
+        try {
+            fis = new FileInputStream(filename);
+            in = new ObjectInputStream(fis);
+            newMaze = (Maze) in.readObject();
+            in.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        this.hauteur = newMaze.hauteur;
+        this.largeur = newMaze.largeur;
+        this.graph = newMaze.graph;
 
-      System.out.println("Chargement du Maze effecuté");
-    }
-
-
-
-
+        System.out.println("Chargement du Maze effecuté");
+    }   
 
 
 }
